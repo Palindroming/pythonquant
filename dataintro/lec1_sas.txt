@@ -1,0 +1,22 @@
+DATA example ; 
+ input math physics ;
+ datalines; 
+ 66 70
+ 64 68
+ 48 46
+ 46 48
+ 78 84
+ 60 64
+ 90 92
+ 50 52
+ 66 68
+ 70 72
+run;
+
+proc gplot data=example ; 
+ plot physics math ; 
+run ; 
+
+proc corr data=example ;
+ var physics math ; 
+run ;

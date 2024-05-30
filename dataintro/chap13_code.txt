@@ -1,0 +1,128 @@
+
+sq_value <- (function(x) { x*x }
+sq_value(4) 
+
+fpower <- function(x,n) { x^n }
+fpower(3,2)
+fpower(4, 1/2)
+
+
+power_value <- function(x,n1,n2,n3=5)
+ { n1_val = x^n1
+   n2_val = x^n2
+   n3_val = x^n3
+   value = list(v1=n1_val, v2=n2_val, v3=n3_val)
+   return(value)
+}
+
+
+power_value(2,1/2,2)
+
+source("c:/rpgm/powerfun.r")
+power_value(2,1/2,2,3)
+
+plot(function(x) dnorm(x), -3, 3, main="정규분포")
+
+pnorm(0)
+pnorm(1)
+pnorm(2)
+pnorm(3)
+
+rnorm(20)
+rnorm(100,-5,2.5)
+
+ran_norm = rnorm(100)
+mean(ran_norm)
+sd(ran_norm)
+hist(ran_norm)
+
+percData <- read.table("c:/data/dataintro/perc.txt", header=T)
+percData <- as.matrix(percData)
+var_name <- colnames(percData)
+case_name <- rownames(percData) 
+
+# barplot
+barplot(percData, names=var_name)
+legend(locator(1), case_name)
+title("Barplot") 
+
+#Piechart
+pie(percData[,1], labels=case.name)
+title("Pie Chart of Company 1")
+
+ex8_2 = read.csv("c:/data/dataintro/ex8-2.csv")
+colnames(ex2)
+
+edu_tb = table(ex8_2$edu)
+edu_tb
+
+rownames(edu_tb) = c("무학", "초졸", "중졸", "고졸", "대졸")
+edu_tb
+
+barplot(edu_tb)
+
+EduSex = list(ex8_2$sex, ex2$edu)
+EduSex_tb = table(EduSex)
+EduSex_tb
+
+colnames(EduSex_tb) = c("무학", "초졸", "중졸", "고졸", "대졸")
+rownames(EduSex_tb) = c("남성", "여성")
+EduSex_tb
+
+barplot(EduSex_tb)
+
+#Piechart
+par(mfrow=c(1,2))
+pie(EduSex_tb[1,])
+title("Education of Male")
+pie(EduSex_tb[2,])
+title("Education of Female“)
+
+boxplot(percData[,1],percData[,2],percData[,3],names=var.name )
+title("Box Plot")
+
+my_sample <- rt(50,5)
+hist(my_sample)
+stem(my_sample)
+
+co2
+plot(co2)
+lines(smooth(co2), col="BLUE")
+
+x = seq(-30, 30, 0.1)
+y = 2*(x-3)^3 + (x-2)^2 + 4*x - 3
+plot(x,y, type="l")
+abline(h=0, v=0, lty=2) 
+
+ageHist = hist(ex8_2$age, col="BLUE")
+names(ageHist)
+ageHist$breaks
+ageHist$counts
+ageHist$mids
+
+stem(ex8_2$age[ex8_2$sex==1])
+stem(ex8_2$age[ex8_2$sex==2])
+
+library(aplpack)
+m_age = ex8_2$age[ex8_2$sex==1]
+f_age = ex8_2$age[ex8_2$sex==2]
+stem.leaf.backback(m_age, f_age)
+
+boxplot(age ~ sex, data=ex8_2) 
+
+plot(ex8_2$age, ex8_2$salary, type="n")
+points(ex8_2$age[ex8_2$sex==1], ex8_2$salary[ex8_2$sex==1], pch="M", col=4)
+points(ex8_2$age[ex8_2$sex==2], ex8_2$salary[ex8_2$sex==2], pch="F", col=2)
+legend("bottomright", legend=c("Male","Female"), pch=c("M","F"),col=c("BLUE","RED"))
+
+plot(ex8_2$age, ex8_2$salary, type="n")
+points(ex8_2$age[ex8_2$sex==1], ex8_2$salary[ex8_2$sex==1], pch=19, col=4)
+points(ex8_2$age[ex8_2$sex==2], ex8_2$salary[ex8_2$sex==2], pch=17, col=2)
+legend("bottomright", legend=c("Male","Female"), pch=c(19,17),col=c(4,2))
+
+dev.new()
+dev.off()
+
+
+
+

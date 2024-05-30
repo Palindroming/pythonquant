@@ -1,0 +1,112 @@
+# 9.2.1
+
+import pandas as pd
+
+nex8 = pd.read_csv("c:/data/dataintro/nex8-1.csv", header=0)
+nex8.head()
+
+nex8.head(3)
+
+nex8.tail(3)
+
+type(nex8)
+
+nex8.shape
+
+# 9.2.2
+
+import pandas as pd
+
+nex8_2 = pd.read_excel("c:/data/dataintro/nex8-1.xlsx", header=0)
+nex8_2.head(3)
+
+# 9.2.3
+
+import pandas as pd
+
+nex8 = pd.read_csv("c:/data/dataintro/nex8-1.csv", header=0)
+nex8.head(2)
+
+nex8 = nex8.iloc[:,1:]
+nex8.head(2)
+
+nex8["salary"].mean()
+
+nex8["salary"].std()
+
+nex8["salary"].median()
+
+
+nex8["salary"].quantile(0.75)
+
+ 
+nex8.describe()
+
+# 9.2.4
+
+group_stat_by_sex = nex8.groupby("sex")["salary"].describe() 
+
+group_stat_by_sex
+
+group_stat_by_sex["mean"]
+
+
+group_stat_by_sex["std"]
+
+group_stat_by_sex.loc["m"]
+
+group_stat_by_sex.loc["f"]
+
+# 9.2.5
+
+sex_freq = pd.crosstab(index=nex8["sex"], columns="count")
+
+sex_freq
+
+edu_freq = pd.crosstab(index=nex8["edu"], columns="count")
+
+edu_freq
+
+sex_edu_table = pd.crosstab(index=nex8["sex"], columns=nex8["edu"])
+
+sex_edu_table
+
+from scipy.stats import chi2_contingency
+
+chi2_contingency(sex_edu_table)
+
+# 9.2.6
+
+import matplotlib.pyplot as plt
+
+plt.bar(sex_freq.index, sex_freq["count"] )
+
+plt.pie(edu_freq["count"], labels=edu_freq.index)
+
+sex_edu_table.plot.bar(stacked=True)
+
+# 9.2.7
+
+import matplotlib.pyplot as plt
+
+plt.hist(nex8["salary"], bins=4)
+
+import stemgraphic
+stemgraphic.stem_graphic(nex8.salary, scale=100)
+
+import seaborn as sns
+sns.boxplot(x="sex", y="salary", data=nex8)
+
+# 9.2.8
+
+
+import matplotlib.pyplot as plt
+
+plt.scatter(nex8.age, nex8.salary)
+
+import numpy as np
+colors = np.where(nex8["sex"]=='m','r','b')
+colors
+
+plt.scatter(nex8.age, nex8.salary, c=colors)
+
